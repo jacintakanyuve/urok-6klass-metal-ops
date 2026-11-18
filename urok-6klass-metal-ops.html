@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Труд (технология) 6 класс: Резание и гибка тонколистового металла и проволоки</title>
+  <style>
+    :root {
+      --bg: #f1f5f9;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --primary: #1d4ed8;
+      --primary-dark: #1e3a8a;
+      --primary-light: #dbeafe;
+      --accent: #0f766e;
+      --accent-light: #ccfbf1;
+      --success: #059669;
+      --success-light: #d1fae5;
+      --warning: #d97706;
+      --warning-light: #fef3c7;
+      --danger: #dc2626;
+      --danger-light: #fee2e2;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #cbd5e1;
+      --radius: 16px;
+      --shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 56px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 16px;
+    }
+
+    .topbar-inner {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .topbar-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    .timer-box {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 0.35s ease;
+    }
+
+    .nav-pills {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-top: 10px;
+      scrollbar-width: none;
+    }
+
+    .nav-pills::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-pill {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .nav-pill.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .nav-pill.done {
+      border-color: var(--success);
+      color: var(--success);
+      background: var(--success-light);
+    }
+
+    .nav-pill.active.done {
+      background: var(--success);
+      color: #fff;
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 20px auto 0;
+      padding: 0 16px;
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(203, 213, 225, 0.75);
+    }
+
+    .module {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .module.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 1.52rem;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.28rem;
+      margin-bottom: 12px;
+      color: var(--primary-dark);
+    }
+
+    h3 {
+      font-size: 1.06rem;
+      margin: 16px 0 8px;
+    }
+
+    p {
+      margin-bottom: 12px;
+    }
+
+    ul {
+      margin: 8px 0 14px 20px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .time-tag {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 3px 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .callout {
+      background: var(--surface-soft);
+      border-left: 4px solid var(--primary);
+      padding: 14px 16px;
+      border-radius: 0 12px 12px 0;
+      margin: 14px 0;
+    }
+
+    .callout.warn {
+      border-left-color: var(--danger);
+      background: var(--danger-light);
+    }
+
+    .callout.success {
+      border-left-color: var(--success);
+      background: var(--success-light);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+
+    .info-box {
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .info-box strong {
+      display: block;
+      font-size: 1.02rem;
+      margin-bottom: 6px;
+      color: var(--primary-dark);
+    }
+
+    .interactive-zone {
+      background: #f8fafc;
+      border: 2px dashed #93c5fd;
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-top: 18px;
+    }
+
+    .interactive-title {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 18px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-secondary {
+      background: #e2e8f0;
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: #cbd5e1;
+    }
+
+    .btn-success {
+      background: var(--success);
+    }
+
+    .btn-success:hover {
+      background: #047857;
+    }
+
+    .btn-sm {
+      padding: 7px 14px;
+      font-size: 0.86rem;
+      border-radius: 8px;
+    }
+
+    .nav-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 1rem;
+      margin: 8px 0 12px;
+    }
+
+    /* Карточки выбора и сортировки */
+    .sort-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+
+    .sort-item-text {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .sort-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .choice-btn {
+      background: var(--surface-soft);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .choice-btn:hover {
+      background: #e2e8f0;
+    }
+
+    .choice-btn.selected {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .choice-btn.correct {
+      background: var(--success);
+      color: #fff;
+      border-color: var(--success);
+    }
+
+    .choice-btn.wrong {
+      background: var(--danger);
+      color: #fff;
+      border-color: var(--danger);
+    }
+
+    /* Визуализация SVG */
+    .svg-viewer {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      margin: 12px 0;
+      text-align: center;
+    }
+
+    .svg-viewer svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    /* Конструктор последовательности (Модуль 3) */
+    .order-pool {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .order-chip {
+      background: var(--surface);
+      border: 1px solid var(--primary);
+      color: var(--primary-dark);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .order-chip:hover {
+      background: var(--primary-light);
+    }
+
+    .order-slot {
+      background: var(--surface);
+      border: 2px dashed var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .order-slot.filled {
+      border-style: solid;
+      border-color: var(--primary);
+      color: var(--text);
+      background: #fff;
+    }
+
+    /* Итоговый тест */
+    .quiz-q {
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .quiz-opt {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 10px 14px;
+      margin-top: 8px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.93rem;
+      transition: all 0.15s;
+    }
+
+    .quiz-opt:hover {
+      border-color: var(--primary);
+    }
+
+    .quiz-opt.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      font-weight: 600;
+    }
+
+    .quiz-opt.correct {
+      border-color: var(--success);
+      background: var(--success-light);
+      color: #065f46;
+      font-weight: 700;
+    }
+
+    .quiz-opt.wrong {
+      border-color: var(--danger);
+      background: var(--danger-light);
+      color: #991b1b;
+    }
+
+    /* Сертификат */
+    .cert-box {
+      border: 3px solid var(--primary);
+      background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+      border-radius: 18px;
+      padding: 24px;
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    .cert-grade {
+      display: inline-block;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--success);
+      background: var(--success-light);
+      padding: 8px 22px;
+      border-radius: 12px;
+      margin: 12px 0;
+    }
+
+    .feedback {
+      margin-top: 10px;
+      font-weight: 600;
+      font-size: 0.93rem;
+    }
+
+    @media (max-width: 600px) {
+      .card { padding: 16px; }
+      h1 { font-size: 1.32rem; }
+      h2 { font-size: 1.16rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-row">
+        <span class="badge">Труд (технология) • 6 класс</span>
+        <span class="timer-box" id="timerDisplay">Время урока: 00:00 / 45:00</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressBar"></div>
+      </div>
+      <nav class="nav-pills" id="navPills">
+        <button class="nav-pill active" onclick="goToStep(0)">Старт</button>
+        <button class="nav-pill" onclick="goToStep(1)">1. Заготовки и разметка</button>
+        <button class="nav-pill" onclick="goToStep(2)">2. Резание</button>
+        <button class="nav-pill" onclick="goToStep(3)">3. Гибка</button>
+        <button class="nav-pill" onclick="goToStep(4)">4. Техника безопасности</button>
+        <button class="nav-pill" onclick="goToStep(5)">5. Итоговый тест</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ШАГ 0: ВВЕДЕНИЕ -->
+    <section class="module active" id="step-0">
+      <div class="card">
+        <span class="time-tag">Самостоятельный урок • 45 минут</span>
+        <h1>Технологические операции: резание, гибка тонколистового металла и проволоки</h1>
+        <p>Тонколистовой металл и проволока широко применяются в быту, строительстве и технике: из них изготавливают корпуса приборов, кровельные элементы, скобы, крепёжные уголки, пружины и декоративные изделия.</p>
+        <p>На этом уроке ты изучишь основные слесарные операции — <strong>резание</strong> и <strong>гибку</strong>, разберёшь устройство режущих и гибочных инструментов, а также правила безопасной работы в слесарной мастерской.</p>
+
+        <div class="callout">
+          <strong>План работы на урок:</strong><br />
+          1. Изучить виды заготовок, правку и разметку металла.<br />
+          2. Освоить приёмы резания тонколистового металла и проволоки в интерактивном атласе.<br />
+          3. Разобраться в технологии гибки и пройти итоговый тест из 8 вопросов.
+        </div>
+
+        <label for="studentNameInput"><strong>Введи фамилию, имя и класс перед началом:</strong></label>
+        <input type="text" id="studentNameInput" class="input-field" placeholder="Например: Костин Даниил, 6-А" />
+
+        <div class="nav-footer">
+          <span></span>
+          <button class="btn" onclick="startLesson()">Начать урок →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ШАГ 1: ЗАГОТОВКИ, ПРАВКА И РАЗМЕТКА -->
+    <section class="module" id="step-1">
+      <div class="card">
+        <span class="time-tag">Модуль 1 • Рекомендуемое время: 8 минут</span>
+        <h2>1. Тонколистовой металл и проволока. Подготовка к обработке</h2>
+
+        <div class="grid-2">
+          <div class="info-box">
+            <strong>Тонколистовой металл</strong>
+            Металлические листы толщиной <strong>до 2 мм</strong>. К ним относятся <em>жесть</em> (чёрная и белая, толщиной 0,2–0,5 мм), <em>кровельная сталь</em> (0,5–0,8 мм), а также листы из алюминия, меди и латуни. Самые тонкие листы (до 0,1 мм) называют <em>фольгой</em>.
+          </div>
+          <div class="info-box">
+            <strong>Проволока</strong>
+            Металлический шнур (нить) круглого, квадратного или шестигранного сечения толщиной обычно <strong>до 6–8 мм</strong>. Изготавливают из стали, алюминия, меди путём протягивания (волочения) металла через сужающееся отверстие.
+          </div>
+        </div>
+
+        <h3>Операции, предшествующие резанию и гибке:</h3>
+        <ul>
+          <li><strong>Правка</strong> — выравнивание помятых или изогнутых заготовок. Тонколистовой металл правят на стальной <em>правильной плите</em> деревянным или резиновым молотком — <strong>киянкой</strong> (чтобы не оставлять вмятин). Проволоку протягивают между двумя деревянными брусками, зажатыми в тисках.</li>
+          <li><strong>Разметка</strong> — нанесение контуров будущей детали. Карандаш на металле почти не виден, поэтому линии проводят стальной острой иглой — <strong>чертилкой</strong>, окружности чертят <em>разметочным циркулем</em>, а центры отверстий намечают ударом молотка по <strong>кернеру</strong>.</li>
+        </ul>
+
+        <div class="interactive-zone">
+          <div class="interactive-title">Тренажёр: Подбери инструмент для подготовки заготовки</div>
+          <div id="m1Container"></div>
+          <button class="btn btn-sm" onclick="checkM1()">Проверить ответы</button>
+          <div class="feedback" id="m1Feedback"></div>
+        </div>
+
+        <div class="nav-footer">
+          <button class="btn btn-secondary" onclick="goToStep(0)">← Назад</button>
+          <button class="btn" onclick="goToStep(2)">Дальше: Резание металла и проволоки →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ШАГ 2: ТЕХНОЛОГИЧЕСКАЯ ОПЕРАЦИЯ — РЕЗАНИЕ -->
+    <section class="module" id="step-2">
+      <div class="card">
+        <span class="time-tag">Модуль 2 • Рекомендуемое время: 12 минут</span>
+        <h2>2. Резание тонколистового металла и проволоки</h2>
+        <p><strong>Резание</strong> — это разделение заготовки на части по линиям разметки. Для тонколистового металла и проволоки применяют резание <em>без снятия стружки</em> (с помощью клиновидных лезвий, работающих навстречу друг другу).</p>
+
+        <div class="interactive-zone">
+          <div class="interactive-title">Интерактивный атлас: Инструменты для резания</div>
+          <p style="font-size: 0.92rem;">Выбирай инструмент, чтобы изучить его устройство и область применения:</p>
+          <div class="sort-buttons">
+            <button class="choice-btn selected" onclick="showCutTool('snips', this)">Ручные слесарные ножницы</button>
+            <button class="choice-btn" onclick="showCutTool('bench', this)">Стуловые ножницы</button>
+            <button class="choice-btn" onclick="showCutTool('cutters', this)">Кусачки (бокорезы)</button>
+            <button class="choice-btn" onclick="showCutTool('pliers', this)">Плоскогубцы</button>
+          </div>
+          <div class="svg-viewer" id="cutToolDisplay"></div>
+        </div>
+
+        <h3>Три правила качественного резания ножницами:</h3>
+        <ul>
+          <li><strong>Линия разметки должна быть видна:</strong> при резании правой рукой верхнее лезвие ножниц направляют строго по линии разметки так, чтобы оно не закрывало черту.</li>
+          <li><strong>Не смыкайте лезвия до конца:</strong> при полном смыкании кончики лезвий надрывают металл и образуют острые <em>заусенцы</em>. Раскрывайте ножницы, оставляя 2–3 мм до конца лезвий, и продвигайте их вперёд.</li>
+          <li><strong>Криволинейные контуры</strong> вырезают ножницами с изогнутыми лезвиями (правыми или левыми), плавно поворачивая лист навстречу лезвиям.</li>
+        </ul>
+
+        <div class="interactive-zone">
+          <div class="interactive-title">Практикум: Выбери правильный инструмент и приём</div>
+          <div id="m2Container"></div>
+          <button class="btn btn-sm" onclick="checkM2()">Проверить</button>
+          <div class="feedback" id="m2Feedback"></div>
+        </div>
+
+        <div class="nav-footer">
+          <button class="btn btn-secondary" onclick="goToStep(1)">← Назад</button>
+          <button class="btn" onclick="goToStep(3)">Дальше: Гибка металла и проволоки →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ШАГ 3: ТЕХНОЛОГИЧЕСКАЯ ОПЕРАЦИЯ — ГИБКА -->
+    <section class="module" id="step-3">
+      <div class="card">
+        <span class="time-tag">Модуль 3 • Рекомендуемое время: 13 минут</span>
+        <h2>3. Гибка тонколистового металла и проволоки</h2>
+        <p><strong>Гибка</strong> — это слесарная операция, при которой заготовке придают изогнутую форму без снятия слоя материала. При гибке внутренние слои металла <strong>сжимаются</strong>, наружные — <strong>растягиваются</strong>, а средний (нейтральный) слой сохраняет свою длину.</p>
+
+        <div class="grid-2">
+          <div class="info-box">
+            <strong>Гибка тонколистового металла</strong>
+            Заготовку зажимают в <strong>слесарных тисках</strong> вместе с <em>оправкой</em> (бруском или цилиндром нужной формы). Чтобы стальные губки тисков с насечкой не поцарапали мягкий металл, на них надевают <strong>нагубники</strong> из алюминия, меди или дерева. Удары наносят <strong>киянкой</strong> от краёв к середине.
+          </div>
+          <div class="info-box">
+            <strong>Гибка проволоки</strong>
+            Тонкую проволоку сгибают <strong>плоскогубцами</strong> (под прямым углом) или <strong>круглогубцами</strong> (для получения колец, петель и ушек). Для серийного изготовления одинаковых колец проволоку навивают на цилиндрическую оправку.
+          </div>
+        </div>
+
+        <div class="interactive-zone">
+          <div class="interactive-title">Визуализатор приёмов гибки</div>
+          <p style="font-size: 0.92rem;">Переключай режимы, чтобы рассмотреть схему гибки листа в тисках и формирования кольца из проволоки:</p>
+          <div class="sort-buttons">
+            <button class="choice-btn selected" onclick="showBendDemo('sheet', this)">Гибка листа под углом 90° в тисках</button>
+            <button class="choice-btn" onclick="showBendDemo('wire', this)">Гибка кольца из проволоки круглогубцами</button>
+          </div>
+          <div class="svg-viewer" id="bendDemoDisplay"></div>
+
+          <hr style="margin: 18px 0; border: none; border-top: 1px solid var(--border);" />
+
+          <div class="interactive-title">Конструктор техпроцесса: Изготовление крепёжного уголка</div>
+          <p style="font-size: 0.92rem;">Нажимай на этапы в правильной последовательности, чтобы изготовить уголок из полосы кровельной стали:</p>
+          <div class="order-pool" id="orderPool"></div>
+          <div id="orderSlots">
+            <div class="order-slot" id="slot-0">Этап 1: ...</div>
+            <div class="order-slot" id="slot-1">Этап 2: ...</div>
+            <div class="order-slot" id="slot-2">Этап 3: ...</div>
+            <div class="order-slot" id="slot-3">Этап 4: ...</div>
+          </div>
+          <div style="margin-top: 10px; display: flex; gap: 8px;">
+            <button class="btn btn-sm btn-secondary" onclick="resetOrder()">Сбросить</button>
+            <button class="btn btn-sm" onclick="checkOrder()">Проверить порядок</button>
+          </div>
+          <div class="feedback" id="orderFeedback"></div>
+        </div>
+
+        <div class="nav-footer">
+          <button class="btn btn-secondary" onclick="goToStep(2)">← Назад</button>
+          <button class="btn" onclick="goToStep(4)">Дальше: Техника безопасности →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ШАГ 4: ТЕХНИКА БЕЗОПАСНОСТИ -->
+    <section class="module" id="step-4">
+      <div class="card">
+        <span class="time-tag">Модуль 4 • Рекомендуемое время: 5 минут</span>
+        <h2>4. Правила безопасной работы при резании и гибке</h2>
+        <p>Кромки разрезанного листового металла и концы откушенной проволоки очень острые. Чтобы избежать порезов и травм глаз, строго соблюдай правила техники безопасности:</p>
+
+        <div class="callout warn">
+          <strong>Обязательные правила в слесарной мастерской:</strong><br />
+          • При резании тонколистового металла надень на левую руку <strong>защитную рукавицу (перчатку)</strong> и не держи пальцы близко к лезвиям ножниц.<br />
+          • При откусывании кусачками коротких кусков проволоки <strong>придерживай свободный конец рукой</strong> (или направляй в сторону от себя и соседей), чтобы он не отскочил в глаза.<br />
+          • Сразу после резания зачисти острые кромки и заусенцы личным напильником.<br />
+          • Не сдувай металлические опилки ртом и не смахивай их голыми руками — пользуйся <strong>щёткой-смёткой</strong>.
+        </div>
+
+        <div class="interactive-zone">
+          <div class="interactive-title">Инспектор ТБ: Оцени действия учеников</div>
+          <div id="m4Container"></div>
+          <button class="btn btn-sm" onclick="checkM4()">Проверить</button>
+          <div class="feedback" id="m4Feedback"></div>
+        </div>
+
+        <div class="nav-footer">
+          <button class="btn btn-secondary" onclick="goToStep(3)">← Назад</button>
+          <button class="btn" onclick="goToStep(5)">Перейти к итоговому тесту →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ШАГ 5: ИТОГОВЫЙ ТЕСТ -->
+    <section class="module" id="step-5">
+      <div class="card">
+        <span class="time-tag">Модуль 5 • Рекомендуемое время: 7 минут</span>
+        <h2>5. Итоговый контроль знаний</h2>
+        <p>Ответь на 8 вопросов по теме урока. После проверки сформируется именная карточка с оценкой.</p>
+
+        <div id="finalQuizContainer"></div>
+
+        <button class="btn btn-success" style="width: 100%; margin-top: 10px;" onclick="finishLesson()">Завершить урок и получить оценку</button>
+
+        <div id="certificateSection" style="display: none;">
+          <div class="cert-box">
+            <div style="font-size: 0.88rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 700;">
+              Карточка прохождения урока • Труд (технология) 6 класс
+            </div>
+            <h2 id="certStudentName" style="margin: 8px 0; color: var(--text);">Ученик 6 класса</h2>
+            <p style="margin-bottom: 4px;">Тема: «Резание, гибка тонколистового металла и проволоки»</p>
+            <div class="cert-grade" id="certGradeText">Оценка: 5 (Отлично)</div>
+            <p id="certStats" style="font-weight: 600;"></p>
+            <p id="certCode" style="font-family: monospace; font-size: 0.9rem; color: var(--text-muted);"></p>
+            <div class="callout success" style="text-align: left; margin-top: 12px;">
+              Сделай скриншот этой карточки и отправь учителю для выставления оценки в журнал!
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-footer">
+          <button class="btn btn-secondary" onclick="goToStep(4)">← Вернуться к теории</button>
+          <button class="btn btn-secondary btn-sm" onclick="resetAll()">Пройти заново</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // --- СОСТОЯНИЕ ---
+    const state = {
+      currentStep: 0,
+      completedSteps: [false, false, false, false, false, false],
+      secondsElapsed: 0,
+      studentName: ""
+    };
+
+    // --- ТАЙМЕР ---
+    setInterval(() => {
+      state.secondsElapsed++;
+      const m = String(Math.floor(state.secondsElapsed / 60)).padStart(2, "0");
+      const s = String(state.secondsElapsed % 60).padStart(2, "0");
+      document.getElementById("timerDisplay").textContent = `Время урока: ${m}:${s} / 45:00`;
+    }, 1000);
+
+    // --- НАВИГАЦИЯ ---
+    function goToStep(idx) {
+      document.querySelectorAll(".module").forEach((el, i) => el.classList.toggle("active", idx === i));
+      document.querySelectorAll(".nav-pill").forEach((pill, i) => {
+        pill.classList.toggle("active", idx === i);
+        pill.classList.toggle("done", state.completedSteps[i]);
+      });
+      state.currentStep = idx;
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function markStepDone(idx) {
+      state.completedSteps[idx] = true;
+      const pills = document.querySelectorAll(".nav-pill");
+      if (pills[idx]) pills[idx].classList.add("done");
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const done = state.completedSteps.filter(Boolean).length;
+      const pct = Math.min(100, Math.round((done / 5) * 100));
+      document.getElementById("progressBar").style.width = `${pct}%`;
+    }
+
+    function startLesson() {
+      const val = document.getElementById("studentNameInput").value.trim();
+      state.studentName = val || "Ученик 6 класса";
+      markStepDone(0);
+      goToStep(1);
+    }
+
+    // --- УНИВЕРСАЛЬНЫЙ РЕНДЕР ТРЕНАЖЁРОВ ---
+    const sortStorage = { m1Container: {}, m2Container: {}, m4Container: {} };
+
+    function buildSortModule(containerId, items, options) {
+      const box = document.getElementById(containerId);
+      box.innerHTML = "";
+      items.forEach((item, idx) => {
+        const div = document.createElement("div");
+        div.className = "sort-item";
+        div.innerHTML = `
+          <div class="sort-item-text"><strong>${idx + 1}.</strong> ${item.text}</div>
+          <div class="sort-buttons" id="${containerId}-btns-${idx}">
+            ${options.map(opt => `
+              <button class="choice-btn" onclick="selectSortOption('${containerId}', ${idx}, '${opt}', this)">${opt}</button>
+            `).join("")}
+          </div>
+        `;
+        box.appendChild(div);
+      });
+    }
+
+    function selectSortOption(containerId, idx, opt, btn) {
+      sortStorage[containerId][idx] = opt;
+      const group = document.getElementById(`${containerId}-btns-${idx}`);
+      group.querySelectorAll(".choice-btn").forEach(b => b.classList.remove("selected", "correct", "wrong"));
+      btn.classList.add("selected");
+    }
+
+    function evaluateSortModule(containerId, items, feedbackId, stepIndex) {
+      let ok = 0;
+      items.forEach((item, idx) => {
+        const group = document.getElementById(`${containerId}-btns-${idx}`);
+        const chosen = sortStorage[containerId][idx];
+        group.querySelectorAll(".choice-btn").forEach(b => {
+          b.classList.remove("selected", "correct", "wrong");
+          if (b.textContent === chosen) {
+            if (chosen === item.answer) {
+              b.classList.add("correct");
+              ok++;
+            } else {
+              b.classList.add("wrong");
+            }
+          }
+        });
+      });
+      const fb = document.getElementById(feedbackId);
+      if (ok === items.length) {
+        fb.style.color = "var(--success)";
+        fb.textContent = `Отлично! Все ${ok} из ${items.length} ответов верны!`;
+        markStepDone(stepIndex);
+      } else {
+        fb.style.color = "var(--warning)";
+        fb.textContent = `Правильно: ${ok} из ${items.length}. Исправь выделенные красным пункты.`;
+      }
+    }
+
+    // --- МОДУЛЬ 1 ---
+    const m1Data = [
+      { text: "Выравнивание помятого листа жести на правильной плите без вмятин", answer: "Киянка" },
+      { text: "Проведение тонких видимых линий контура детали на поверхности металла", answer: "Чертилка" },
+      { text: "Нанесение углубления в центре будущего отверстия перед сверлением", answer: "Кернер" },
+      { text: "Протягивание изогнутой проволоки для её выпрямления", answer: "Деревянные бруски в тисках" }
+    ];
+    buildSortModule("m1Container", m1Data, ["Киянка", "Чертилка", "Кернер", "Деревянные бруски в тисках"]);
+    function checkM1() { evaluateSortModule("m1Container", m1Data, "m1Feedback", 1); }
+
+    // --- МОДУЛЬ 2: АТЛАС ИНСТРУМЕНТОВ РЕЗАНИЯ ---
+    function showCutTool(type, btn) {
+      if (btn) {
+        document.querySelectorAll("#step-2 .sort-buttons:first-of-type .choice-btn").forEach(b => b.classList.remove("selected"));
+        btn.classList.add("selected");
+      }
+      const out = document.getElementById("cutToolDisplay");
+      if (type === "snips") {
+        out.innerHTML = `
+          <svg viewBox="0 0 360 110" style="max-width:360px;">
+            <path d="M 30 35 Q 90 25 160 55 L 320 40 L 165 65 Q 95 45 30 35 Z" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+            <path d="M 30 75 Q 90 85 160 55 L 320 70 L 165 45 Q 95 65 30 75 Z" fill="#94a3b8" stroke="#334155" stroke-width="2"/>
+            <circle cx="163" cy="55" r="5" fill="#1d4ed8"/>
+            <text x="180" y="100" font-size="12" font-weight="bold" text-anchor="middle" fill="#1e3a8a">Ось шарнира и режущие лезвия</text>
+          </svg>
+          <div><strong>Ручные слесарные ножницы:</strong> предназначены для разрезания стальных листов толщиной <strong>до 0,8–1 мм</strong> и мягких цветных металлов (алюминия, меди) толщиной до 1,5 мм.</div>
+        `;
+      } else if (type === "bench") {
+        out.innerHTML = `
+          <svg viewBox="0 0 360 115" style="max-width:360px;">
+            <rect x="40" y="75" width="240" height="14" rx="4" fill="#64748b"/>
+            <polygon points="70,75 260,75 260,60" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+            <polygon points="70,75 275,25 280,38" fill="#1d4ed8" stroke="#1e3a8a" stroke-width="2"/>
+            <circle cx="75" cy="72" r="5" fill="#f59e0b"/>
+            <text x="180" y="106" font-size="12" font-weight="bold" text-anchor="middle" fill="#1e3a8a">Нижний нож закреплён в тисках, верхний имеет длинный рычаг</text>
+          </svg>
+          <div><strong>Стуловые ножницы:</strong> имеют длинную рукоятку-рычаг и нижний отогнутый хвостовик для зажима в слесарных тисках. Позволяют резать более толстый листовой металл (<strong>до 2 мм</strong>).</div>
+        `;
+      } else if (type === "cutters") {
+        out.innerHTML = `
+          <svg viewBox="0 0 360 110" style="max-width:360px;">
+            <path d="M 40 30 Q 110 30 165 55 L 225 40 L 235 55 L 165 60 Z" fill="#2563eb" stroke="#1e3a8a" stroke-width="2"/>
+            <path d="M 40 80 Q 110 80 165 55 L 225 70 L 235 55 L 165 50 Z" fill="#3b82f6" stroke="#1e3a8a" stroke-width="2"/>
+            <circle cx="165" cy="55" r="5" fill="#f59e0b"/>
+            <circle cx="235" cy="55" r="4" fill="#dc2626"/>
+            <text x="275" y="59" font-size="12" font-weight="bold" fill="#dc2626">← Проволока</text>
+          </svg>
+          <div><strong>Кусачки (бокорезы и торцовые):</strong> имеют короткие закалённые режущие губки. Используются для перекусывания стальной, медной и алюминиевой проволоки диаметром <strong>до 3–4 мм</strong>.</div>
+        `;
+      } else {
+        out.innerHTML = `
+          <svg viewBox="0 0 360 110" style="max-width:360px;">
+            <path d="M 35 32 Q 105 32 165 55 L 265 44 L 265 53 L 195 53 L 195 55 L 165 58 Z" fill="#0f766e" stroke="#115e59" stroke-width="2"/>
+            <path d="M 35 78 Q 105 78 165 55 L 265 66 L 265 57 L 195 57 L 195 55 L 165 52 Z" fill="#14b8a6" stroke="#115e59" stroke-width="2"/>
+            <circle cx="165" cy="55" r="5" fill="#f59e0b"/>
+            <text x="230" y="96" font-size="12" font-weight="bold" text-anchor="middle" fill="#115e59">Плоские губки + режущая кромка у шарнира</text>
+          </svg>
+          <div><strong>Плоскогубцы (комбинированные):</strong> универсальный инструмент — плоскими губками удобно удерживать и сгибать детали, а режущими кромками возле шарнира перекусывать проволоку.</div>
+        `;
+      }
+    }
+    showCutTool("snips");
+
+    const m2Data = [
+      { text: "Требуется разрезать лист кровельной стали толщиной 1,8 мм. Какой инструмент выбрать?", answer: "Стуловые ножницы" },
+      { text: "Нужно откусить кусок медной проволоки диаметром 2 мм.", answer: "Кусачки (бокорезы)" },
+      { text: "Почему при резании ручными ножницами лезвия не смыкают до самого конца?", answer: "Чтобы не надрывать металл и не образовывать заусенцы" }
+    ];
+    buildSortModule("m2Container", m2Data, [
+      "Стуловые ножницы",
+      "Кусачки (бокорезы)",
+      "Чтобы не надрывать металл и не образовывать заусенцы"
+    ]);
+    function checkM2() { evaluateSortModule("m2Container", m2Data, "m2Feedback", 2); }
+
+    // --- МОДУЛЬ 3: ВИЗУАЛИЗАТОР ГИБКИ И КОНСТРУКТОР ТЕХПРОЦЕССА ---
+    function showBendDemo(mode, btn) {
+      if (btn) {
+        document.querySelectorAll("#step-3 .sort-buttons:first-of-type .choice-btn").forEach(b => b.classList.remove("selected"));
+        btn.classList.add("selected");
+      }
+      const out = document.getElementById("bendDemoDisplay");
+      if (mode === "sheet") {
+        out.innerHTML = `
+          <svg viewBox="0 0 380 140" style="max-width:380px;">
+            <!-- Губки тисков -->
+            <rect x="90" y="65" width="45" height="60" fill="#64748b" stroke="#334155" stroke-width="2"/>
+            <rect x="163" y="65" width="45" height="60" fill="#64748b" stroke="#334155" stroke-width="2"/>
+            <!-- Нагубники -->
+            <rect x="135" y="65" width="6" height="55" fill="#f59e0b"/>
+            <rect x="157" y="65" width="6" height="55" fill="#f59e0b"/>
+            <!-- Оправка -->
+            <rect x="148" y="45" width="9" height="75" fill="#94a3b8"/>
+            <!-- Согнутая заготовка -->
+            <polyline points="144,120 144,42 235,42" fill="none" stroke="#1d4ed8" stroke-width="4"/>
+            <text x="265" y="34" font-size="12" font-weight="bold" fill="#1d4ed8">Отогнутая полка (90°)</text>
+            <text x="65" y="55" font-size="11" font-weight="bold" fill="#b45309">Нагубники</text>
+          </svg>
+          <div><strong>Гибка в тисках:</strong> заготовку зажимают между мягкими <em>нагубниками</em> и <em>оправкой</em> точно по линии разметки, после чего загибают выступающую часть ударами <strong>киянки</strong>.</div>
+        `;
+      } else {
+        out.innerHTML = `
+          <svg viewBox="0 0 380 140" style="max-width:380px;">
+            <!-- Конусные губки круглогубцев -->
+            <circle cx="170" cy="65" r="14" fill="#cbd5e1" stroke="#334155" stroke-width="2.5"/>
+            <circle cx="204" cy="65" r="14" fill="#cbd5e1" stroke="#334155" stroke-width="2.5"/>
+            <!-- Проволока, огибающая губку -->
+            <path d="M 95 79 L 170 79 A 14 14 0 1 0 156 65" fill="none" stroke="#0f766e" stroke-width="4"/>
+            <text x="190" y="115" font-size="12" font-weight="bold" text-anchor="middle" fill="#0f766e">Проволока плавно огибает круглую губку инструмента</text>
+          </svg>
+          <div><strong>Гибка круглогубцами:</strong> конец проволоки захватывают конусными губками круглогубцев и плавно оборачивают вокруг одной из губок, получая аккуратное кольцо (ушко).</div>
+        `;
+      }
+    }
+    showBendDemo("sheet");
+
+    const orderSteps = [
+      { id: "s1", label: "Правка заготовки киянкой и разметка контура чертилкой" },
+      { id: "s2", label: "Резание полосы слесарными ножницами по разметке" },
+      { id: "s3", label: "Зачистка острых кромок и заусенцев напильником" },
+      { id: "s4", label: "Закрепление в тисках с нагубниками и гибка под углом 90°" }
+    ];
+    const correctSequence = ["s1", "s2", "s3", "s4"];
+    let userSequence = [];
+
+    function initOrder() {
+      const pool = document.getElementById("orderPool");
+      pool.innerHTML = "";
+      const shuffled = [...orderSteps].sort(() => Math.random() - 0.5);
+      shuffled.forEach(item => {
+        pool.innerHTML += `<button class="order-chip" id="chip-${item.id}" onclick="pickOrderStep('${item.id}', '${item.label}')">${item.label}</button>`;
+      });
+    }
+
+    function pickOrderStep(id, label) {
+      if (userSequence.length >= 4 || userSequence.includes(id)) return;
+      userSequence.push(id);
+      document.getElementById(`chip-${id}`).style.display = "none";
+      const idx = userSequence.length - 1;
+      const slot = document.getElementById(`slot-${idx}`);
+      slot.classList.add("filled");
+      slot.textContent = `Этап ${idx + 1}: ${label}`;
+    }
+
+    function resetOrder() {
+      userSequence = [];
+      document.querySelectorAll(".order-chip").forEach(el => el.style.display = "inline-block");
+      for (let i = 0; i < 4; i++) {
+        const slot = document.getElementById(`slot-${i}`);
+        slot.classList.remove("filled");
+        slot.style.borderColor = "";
+        slot.textContent = `Этап ${i + 1}: ...`;
+      }
+      document.getElementById("orderFeedback").textContent = "";
+    }
+
+    function checkOrder() {
+      if (userSequence.length < 4) {
+        document.getElementById("orderFeedback").style.color = "var(--warning)";
+        document.getElementById("orderFeedback").textContent = "Сначала выбери все 4 этапа!";
+        return;
+      }
+      let ok = 0;
+      for (let i = 0; i < 4; i++) {
+        const slot = document.getElementById(`slot-${i}`);
+        if (userSequence[i] === correctSequence[i]) {
+          slot.style.borderColor = "var(--success)";
+          ok++;
+        } else {
+          slot.style.borderColor = "var(--danger)";
+        }
+      }
+      const fb = document.getElementById("orderFeedback");
+      if (ok === 4) {
+        fb.style.color = "var(--success)";
+        fb.textContent = "Верно! Технологический маршрут изготовления уголка составлен правильно.";
+        markStepDone(3);
+      } else {
+        fb.style.color = "var(--danger)";
+        fb.textContent = "Есть ошибки (выделены красным). Нажми «Сбросить» и попробуй снова.";
+      }
+    }
+    initOrder();
+
+    // --- МОДУЛЬ 4: ИНСПЕКТОР ТБ ---
+    const m4Data = [
+      { text: "Ученик держит лист жести левой рукой в защитной рукавице при резании ножницами", answer: "Безопасно" },
+      { text: "Ученик откусывает кусачками короткий конец стальной проволоки, не придерживая его", answer: "Нарушение ТБ" },
+      { text: "Ученик сметает металлические опилки с верстака голыми руками", answer: "Нарушение ТБ" },
+      { text: "Ученик зачистил острые заусенцы на краях вырезанной детали напильником перед гибкой", answer: "Безопасно" }
+    ];
+    buildSortModule("m4Container", m4Data, ["Безопасно", "Нарушение ТБ"]);
+    function checkM4() { evaluateSortModule("m4Container", m4Data, "m4Feedback", 4); }
+
+    // --- МОДУЛЬ 5: ИТОГОВЫЙ ТЕСТ ---
+    const quizData = [
+      {
+        q: "1. Металлические листы какой толщины относят к тонколистовому металлу?",
+        options: ["До 2 мм", "От 5 до 10 мм", "Свыше 20 мм"],
+        correct: 0
+      },
+      {
+        q: "2. Каким инструментом правят (выравнивают) помятый лист тонколистового металла, чтобы не оставить вмятин?",
+        options: ["Слесарным молотком со стальным бойком", "Киянкой (деревянным или резиновым молотком)", "Кусачками"],
+        correct: 1
+      },
+      {
+        q: "3. Какой инструмент используют для нанесения линий разметки на поверхность металла?",
+        options: ["Простой карандаш", "Чертилку", "Напильник"],
+        correct: 1
+      },
+      {
+        q: "4. Какой инструмент применяют для перекусывания проволоки небольшого диаметра?",
+        options: ["Кусачки (бокорезы)", "Рубанок", "Киянку"],
+        correct: 0
+      },
+      {
+        q: "5. Что происходит со слоями металла при выполнении технологической операции гибки?",
+        options: [
+          "Все слои равномерно удлиняются",
+          "Внутренние слои сжимаются, а наружные растягиваются",
+          "Металл превращается в стружку"
+        ],
+        correct: 1
+      },
+      {
+        q: "6. Для чего при гибке тонколистового металла в слесарных тисках используют мягкие нагубники?",
+        options: [
+          "Чтобы губки тисков с насечкой не поцарапали и не помяли заготовку",
+          "Чтобы металл быстрее нагрелся",
+          "Чтобы тиски не скользили по полу"
+        ],
+        correct: 0
+      },
+      {
+        q: "7. Какой инструмент удобнее всего использовать для загибания конца проволоки в аккуратное кольцо (ушко)?",
+        options: ["Стуловые ножницы", "Круглогубцы", "Кернер"],
+        correct: 1
+      },
+      {
+        q: "8. Какое правило безопасности нужно обязательно соблюдать при откусывании кусачками короткого конца проволоки?",
+        options: [
+          "Придерживать откусываемый конец рукой и направлять его в сторону от лица",
+          "Подносить кусачки как можно ближе к глазам",
+          "Сдувать обрезки и опилки ртом"
+        ],
+        correct: 0
+      }
+    ];
+    const quizAnswers = {};
+
+    function renderQuiz() {
+      const box = document.getElementById("finalQuizContainer");
+      box.innerHTML = "";
+      quizData.forEach((item, qIdx) => {
+        const div = document.createElement("div");
+        div.className = "quiz-q";
+        div.innerHTML = `
+          <div><strong>${item.q}</strong></div>
+          <div id="quiz-opts-${qIdx}">
+            ${item.options.map((opt, oIdx) => `
+              <button class="quiz-opt" onclick="selectQuiz(${qIdx}, ${oIdx}, this)">${opt}</button>
+            `).join("")}
+          </div>
+        `;
+        box.appendChild(div);
+      });
+    }
+
+    function selectQuiz(qIdx, oIdx, btn) {
+      quizAnswers[qIdx] = oIdx;
+      const box = document.getElementById(`quiz-opts-${qIdx}`);
+      box.querySelectorAll(".quiz-opt").forEach(b => b.classList.remove("selected", "correct", "wrong"));
+      btn.classList.add("selected");
+    }
+
+    function finishLesson() {
+      if (Object.keys(quizAnswers).length < quizData.length) {
+        alert("Ответь на все 8 вопросов теста перед завершением урока!");
+        return;
+      }
+
+      let score = 0;
+      quizData.forEach((item, qIdx) => {
+        const chosen = quizAnswers[qIdx];
+        const box = document.getElementById(`quiz-opts-${qIdx}`);
+        box.querySelectorAll(".quiz-opt").forEach((b, oIdx) => {
+          b.classList.remove("selected", "correct", "wrong");
+          if (oIdx === item.correct) b.classList.add("correct");
+          else if (oIdx === chosen && chosen !== item.correct) b.classList.add("wrong");
+        });
+        if (chosen === item.correct) score++;
+      });
+
+      let grade = 2;
+      let label = "Нужно повторить тему";
+      if (score >= 7) { grade = 5; label = "Отлично"; }
+      else if (score >= 5) { grade = 4; label = "Хорошо"; }
+      else if (score >= 4) { grade = 3; label = "Удовлетворительно"; }
+
+      markStepDone(5);
+      const mins = Math.max(1, Math.round(state.secondsElapsed / 60));
+      const d = new Date();
+      const code = `TECH6-MET-${score}${grade}-${d.getDate()}${d.getMonth() + 1}`;
+
+      document.getElementById("certStudentName").textContent = state.studentName || "Ученик 6 класса";
+      document.getElementById("certGradeText").textContent = `Оценка: ${grade} (${label})`;
+      document.getElementById("certStats").textContent = `Правильных ответов: ${score} из ${quizData.length} • Время работы: ~${mins} мин.`;
+      document.getElementById("certCode").textContent = `Код проверки: ${code}`;
+      document.getElementById("certificateSection").style.display = "block";
+      document.getElementById("certificateSection").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function resetAll() {
+      if (confirm("Сбросить прогресс и пройти урок заново?")) {
+        location.reload();
+      }
+    }
+
+    renderQuiz();
+  </script>
+</body>
+</html>
